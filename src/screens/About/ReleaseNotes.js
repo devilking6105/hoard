@@ -35,7 +35,7 @@ export default function ReleaseNotes() {
                   meaning that you MUST NOT USE REAL BITCOIN OR ETHER WITH THE APP.
                 </T.Light>
                 <T.Light style={styles.type}>
-                  To obtain test currencies, use a "Ropsten Ether faucet" and a
+                  To obtain test currencies, use a "Rinkeby Ether faucet" and a
                   "Bitcoin Testnet faucet". On these sites, you can input the
                   Bitcoin and Ethereum addresses found within this app in your wallet,
                   and receive test Bitcoin and Ether to play with and help us by testing the app.

@@ -64,7 +64,7 @@ export function getNetworkForCoin(symbol) {
     switch (symbol) {
       case 'ETH':
       case 'BOAR': {
-        return 'ropsten';
+        return 'rinkeby';
       }
       case 'BTC':
       case 'LTC': {
@@ -72,6 +72,32 @@ export function getNetworkForCoin(symbol) {
       }
       default:
         return 'test';
+    }
+  }
+}
+
+export function getInfoUrl(symbol, hash) {
+  if (Config.CURRENCY_NETWORK_TYPE === 'main') {
+    switch (symbol) {
+    case 'ETH':
+    case 'BOAR': {
+      return `https://etherscan.io/tx/${hash}`;
+    }
+    case 'BTC':
+      return `https://live.blockcypher.com/btc/tx/${hash}`;
+    default:
+      return '';
+    }
+  } else {
+    switch (symbol) {
+    case 'ETH':
+    case 'BOAR': {
+      return `https://rinkeby.etherscan.io/tx/${hash}`;
+    }
+    case 'BTC':
+      return `https://live.blockcypher.com/btc-testnet/tx/${hash}`;
+    default:
+      return 'test';
     }
   }
 }

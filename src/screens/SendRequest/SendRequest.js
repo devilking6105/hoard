@@ -22,6 +22,7 @@ import {
   RECIPIENT_TYPE_ADDRESS,
   RECIPIENT_TYPE_OTHER,
 } from 'screens/SendRequest/constants';
+import { SYMBOL_BOAR, SYMBOL_ETH } from 'containers/App/constants';
 import Icon from 'components/Icon';
 import NavigatorService from 'lib/navigator';
 import api from 'lib/api';
@@ -217,7 +218,7 @@ export default class SendRequest extends Component {
       return false;
     } else if (
       recipientType === RECIPIENT_TYPE_ADDRESS &&
-      !Validator.validate(recipient, selectedWallet.symbol, Config.CURRENCY_NETWORK_TYPE === 'main' ? 'prod' : 'testnet')
+      !Validator.validate(recipient, selectedWallet.symbol === SYMBOL_BOAR ? SYMBOL_ETH : selectedWallet.symbol, Config.CURRENCY_NETWORK_TYPE === 'main' ? 'prod' : 'testnet')
     ) {
       Alert.alert(`This is not a valid ${selectedWallet.symbol} address`);
       return false;

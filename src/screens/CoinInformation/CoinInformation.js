@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import SectionHeader from 'components/SectionHeader';
 import TradeItem from 'components/TradeItem';
-import { getCoinMetadata } from 'lib/currency-metadata';
+import { getCoinMetadata, getInfoUrl } from 'lib/currency-metadata';
 import { Intervals } from 'components/GetCurrencyHistory';
 import NavigatorService from 'lib/navigator';
 import { Try } from "components/Conditional";
@@ -105,21 +105,7 @@ export default class CoinInformation extends React.Component {
 
   handleSelect = (selectedHash) => () => {
     const selectedTx = this.props.transactions.find(tx => tx.details.hash === selectedHash);
-    let to;
-    if (selectedTx.symbol === SYMBOL_BTC) {
-      if (Config.CURRENCY_NETWORK_TYPE === 'main') {
-        to = `https://live.blockcypher.com/btc/tx/${selectedTx.details.hash}`;
-      } else {
-        to = `https://live.blockcypher.com/btc-testnet/tx/${selectedTx.details.hash}`;
-      }
-    }
-    if ([SYMBOL_ETH, SYMBOL_BOAR].includes(selectedTx.symbol)) {
-      if (Config.CURRENCY_NETWORK_TYPE === 'main') {
-        to = `https://etherscan.io/tx/${selectedTx.details.hash}`;
-      } else {
-        to = `https://ropsten.etherscan.io/tx/${selectedTx.details.hash}`;
-      }
-    }
+    const to = getInfoUrl(selectedTx.symbol, selectedTx.details.hash);
 
     if (to) {
       Linking.openURL(to).catch(err => {

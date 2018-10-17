@@ -7,7 +7,7 @@ export default class BoarWallet extends EthWallet {
   constructor(isMnemonic, mnemonicOrPrivateKey) {
     super(isMnemonic, mnemonicOrPrivateKey);
     this._contract = new ethers.Contract(
-      "0x0d729b3e930521e95de0efbdcd573f4cdc697b82",
+      "0xcba0b17f1afA724D2A19c040d7F90f0468b662ea",
       abi,
       this._wallet
     );

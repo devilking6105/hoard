@@ -218,8 +218,8 @@ function* sendFundsFlow(action) {
 }
 
 function* updateBalanceFlow(action) {
+  const { id } = action;
   try {
-    const { id } = action;
 
     const payload = yield call(getBalance, id);
 

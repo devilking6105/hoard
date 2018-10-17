@@ -19,7 +19,7 @@ import {transactionFound} from './actions';
 import ethSagas, {fetchHistoryEth} from './ethsagas';
 import btcSagas, {fetchHistoryBTC} from './btcsagas';
 import contactSagas from './contactsagas';
-import {fetchHistoryBoar} from './boarsagas';
+import {fetchHistoryBoar, LAST_BOAR_BLOCK_STORAGE_KEY} from './boarsagas';
 import { walletSelector } from 'screens/Wallet/selectors';
 
 
@@ -58,7 +58,8 @@ export function* hydrate() {
   if (state) {
     const currentVersion = yield select(state => state.transactions.version);
     if (state.version !== currentVersion) {
-      state = null
+      state = null;
+      yield call(AsyncStorage.removeItem, LAST_BOAR_BLOCK_STORAGE_KEY);
     }
   }
 

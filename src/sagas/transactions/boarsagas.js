@@ -7,13 +7,13 @@ import { TYPE_SEND, TYPE_REQUEST } from 'screens/SendRequest/constants';
 
 import { provider, getBlock } from "sagas/transactions/ethsagas";
 
-const LAST_BOAR_BLOCK_STORAGE_KEY = 'LAST_BOAR_BLOCK_STORAGE_KEY';
+export const LAST_BOAR_BLOCK_STORAGE_KEY = 'LAST_BOAR_BLOCK_STORAGE_KEY';
 
 export function* fetchHistoryBoar({wallet}) {
   try {
     const previousBlock = yield call(AsyncStorage.getItem, LAST_BOAR_BLOCK_STORAGE_KEY);
 
-    const fromBlock = previousBlock && Number(previousBlock) || "0x1B93A1";
+    const fromBlock = previousBlock && Number(previousBlock) || 0;
     const address = yield call(wallet.getPublicAddress);
     let logs = yield call(() => wallet._wallet.provider.getLogs({
       fromBlock,
