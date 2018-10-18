@@ -143,14 +143,14 @@ export default class CreateSupportTicket extends Component {
               value={this.state.answers.subject}
               type="underline"
             />
-            <View onLayout={this.measureLargeInput} style={styles.largeInput}>
+            <View onLayout={this.measureLargeInput} style={styles.largeInputContainer}>
               <Input
                 placeholder="Description *"
                 multiline={true}
                 onChangeText={this.handleChange('description')}
                 value={this.state.answers.description}
                 error={this.state.showErrors && this.state.errors.description}
-                style={{ height: this.state.largeInputHeight }}
+                style={[{ height: this.state.largeInputHeight }, styles.largeInput]}
               />
             </View>
             <Button
@@ -175,8 +175,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  largeInput: {
+  largeInputContainer: {
     flex: 1,
+  },
+  largeInput: {
+    minHeight: 75
   },
   content: {
     padding: 20,
