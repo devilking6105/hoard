@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { StyleSheet, Text, Image, View } from 'react-native';
 import { getNetworkForCoin } from 'lib/currency-metadata';
 import T from 'components/Typography';
+import { t } from 'translations/i18n';
 import { Try } from 'components/Conditional';
 
 import { Layout, Body, Header, Footer } from 'components/Base';
@@ -11,8 +12,6 @@ import _ from 'lodash';
 import Button from 'components/Button';
 import Input from 'components/Input';
 import NavigatorService from 'lib/navigator';
-
-const LANG_SIGN_UP_TEXT = 'NEXT';
 
 export default class Login extends Component {
   static propTypes = {
@@ -94,7 +93,7 @@ export default class Login extends Component {
               style={styles.logo}
               source={require('assets/hoard_circle_logo.png')} // eslint-disable-line no-undef
             />
-            <Text style={styles.title}>Log In</Text>
+            <Text style={styles.title}>{t('login.log_in')}</Text>
             <Try condition={__DEV__}>
               <View>
                 <T.Small style={styles.network}>{`Using: ${getNetworkForCoin(
@@ -112,7 +111,7 @@ export default class Login extends Component {
               </View>
             </Try>
             <Input
-              placeholder="Username or Email"
+              placeholder={t('input_username')}
               autoCapitalize="none"
               autoCorrect={false}
               returnKeyType="next"
@@ -125,7 +124,7 @@ export default class Login extends Component {
             />
             <Input
               ref={el => (this.loginPasswordInput = el)}
-              placeholder="Password"
+              placeholder={t('input_password')}
               autoCapitalize="none"
               autoCorrect={false}
               returnKeyType="go"
@@ -139,7 +138,7 @@ export default class Login extends Component {
             />
 
             <Button type="text" onPress={this.handleCantLogIn} style={styles.buttonContainerAlt}>
-              {`Can't log?`}
+              {t('login.cant_log_in')}
             </Button>
           </Body>
           <Footer>
@@ -150,13 +149,13 @@ export default class Login extends Component {
               onPress={this.handleFormSubmit}
               style={styles.buttonContainerAlt}
             >
-              {LANG_SIGN_UP_TEXT}
+              {t('login.log_in_button')}
             </Button>
             <Button type="text" onPress={this.handleSignupButton} style={styles.buttonContainerAlt}>
-              New to Hoard? Sign Up!
+              {t('login.new_sign_up')}
             </Button>
             <Button type="text" onPress={this.handleBypassButton}>
-              No thanks, I just want to use the wallet
+              {t('login.skip_sign_up')}
             </Button>
           </Footer>
         </Body>

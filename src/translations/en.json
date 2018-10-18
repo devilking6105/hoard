@@ -1,0 +1,18 @@
+{
+  "title": "Welcome to Hoard",
+  "current_lang": "The current language of choice is \"{{language}}\"",
+  "token": {
+    "one": "1 Token",
+    "other": "{{count}} Tokens",
+    "zero": "0 Tokens"
+  },
+  "input_username" : "Username or Email",
+  "input_password" : "Password",
+  "login" : {
+    "log_in" : "Log In",
+    "log_in_button" : "NEXT",
+    "cant_log_in" : "Can't Log In?",
+    "new_sign_up": "New to Hoard? Sign Up!",
+    "skip_sign_up": "No thanks, I just want to use the wallet"
+  }
+}
