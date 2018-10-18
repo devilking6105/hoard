@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SwipableList /> renders correctly 1`] = `
+<RCTScrollView
+  onScroll={[Function]}
+  style={
+    Object {
+      "flex": 1,
+      "height": "100%",
+      "paddingTop": 20,
+      "width": "100%",
+    }
+  }
+>
+  <View />
+</RCTScrollView>
+`;

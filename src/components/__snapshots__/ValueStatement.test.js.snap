@@ -1,0 +1,165 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ValueStatement /> renders correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+      },
+      undefined,
+    ]
+  }
+>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Array [
+        Object {
+          "color": "#17181e",
+          "fontFamily": "HelveticaNeue",
+          "fontSize": 14,
+          "letterSpacing": 0,
+        },
+        Object {
+          "color": "#8D9FAE",
+        },
+      ]
+    }
+  >
+    Title
+  </Text>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Array [
+        Object {
+          "color": "#ffffff",
+          "fontFamily": "HelveticaNeue",
+          "fontSize": 32,
+          "letterSpacing": 0,
+        },
+        Array [
+          Object {
+            "fontSize": 30,
+          },
+          Object {
+            "color": "#FFFFFF",
+          },
+        ],
+      ]
+    }
+  >
+    Value
+  </Text>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Array [
+        Object {
+          "color": "#00EC9E",
+          "fontFamily": "HelveticaNeue",
+          "fontSize": 12,
+          "letterSpacing": 1,
+        },
+        Array [
+          Object {
+            "color": "#1EDC6B",
+          },
+        ],
+      ]
+    }
+  >
+    Change
+  </Text>
+</View>
+`;
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+      },
+      undefined,
+    ]
+  }
+>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Array [
+        Object {
+          "color": "#17181e",
+          "fontFamily": "HelveticaNeue",
+          "fontSize": 14,
+          "letterSpacing": 0,
+        },
+        Object {
+          "color": "#8D9FAE",
+        },
+      ]
+    }
+  >
+    Title
+  </Text>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Array [
+        Object {
+          "color": "#ffffff",
+          "fontFamily": "HelveticaNeue",
+          "fontSize": 32,
+          "letterSpacing": 0,
+        },
+        Array [
+          Object {
+            "fontSize": 30,
+          },
+          Object {
+            "color": "#FFFFFF",
+          },
+        ],
+      ]
+    }
+  >
+    Value
+  </Text>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Array [
+        Object {
+          "color": "#00EC9E",
+          "fontFamily": "HelveticaNeue",
+          "fontSize": 12,
+          "letterSpacing": 1,
+        },
+        Array [
+          Object {
+            "color": "#1EDC6B",
+          },
+        ],
+      ]
+    }
+  >
+    Change
+  </Text>
+</View>
+`;

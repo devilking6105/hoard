@@ -88,10 +88,10 @@ export default class Login extends Component {
     return (
       <Layout contentReady={this.props.appReady} keyboard>
         <Body scrollable style={styles.body} navigationOffset={80}>
-          <Header style={{ alignItems: 'center', marginTop: -40}}>
+          <Header style={{ alignItems: 'center', marginTop: -40 }}>
             <Image
               style={styles.logo}
-              source={require('assets/hoard_circle_logo.png')} // eslint-disable-line no-undef
+              source={require('assets/hoard_circle_logo.png')}
             />
             <Text style={styles.title}>{t('login.log_in')}</Text>
             <Try condition={__DEV__}>
@@ -111,6 +111,7 @@ export default class Login extends Component {
               </View>
             </Try>
             <Input
+              testID="UsernameInput"
               placeholder={t('input_username')}
               autoCapitalize="none"
               autoCorrect={false}
@@ -123,6 +124,7 @@ export default class Login extends Component {
               type="underline"
             />
             <Input
+              testID="PasswordInput"
               ref={el => (this.loginPasswordInput = el)}
               placeholder={t('input_password')}
               autoCapitalize="none"
@@ -143,6 +145,7 @@ export default class Login extends Component {
           </Body>
           <Footer>
             <Button
+              testID="LoginButton"
               type="base"
               disabled={!this.state.password && !this.state.username_or_email}
               loading={this.state.loading}

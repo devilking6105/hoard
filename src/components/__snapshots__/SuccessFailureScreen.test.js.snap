@@ -1,0 +1,189 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SuccessFailureScreen /> renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "transparent",
+      "flex": 1,
+      "justifyContent": "center",
+      "padding": 25,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "justifyContent": "flex-end",
+      }
+    }
+  >
+    <Image
+      source={
+        Object {
+          "testUri": "../../../src/assets/success-circle.png",
+        }
+      }
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "margin": 45,
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Array [
+          Object {
+            "color": "#17181e",
+            "fontFamily": "HelveticaNeue",
+            "fontSize": 28,
+            "fontWeight": "bold",
+            "letterSpacing": -1,
+          },
+          Object {
+            "color": "white",
+          },
+        ]
+      }
+    >
+      Success
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "width": "100%",
+      }
+    }
+  >
+    <View
+      accessibilityComponentType={undefined}
+      accessibilityLabel={undefined}
+      accessibilityTraits={undefined}
+      accessible={true}
+      collapsable={undefined}
+      hasTVPreferredFocus={undefined}
+      hitSlop={undefined}
+      isTVSelectable={true}
+      nativeID={undefined}
+      onLayout={undefined}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#fff",
+          "borderRadius": 100,
+          "opacity": 1,
+          "paddingVertical": 20,
+          "shadowColor": "#000",
+          "shadowOffset": Object {
+            "height": 1,
+            "width": 0,
+          },
+          "shadowOpacity": 0.5,
+          "shadowRadius": 4,
+        }
+      }
+      testID={undefined}
+      tvParallaxProperties={undefined}
+    >
+      <RCTMaskedView>
+        <View
+          pointerEvents="none"
+          style={
+            Object {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            }
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            gradient={
+              Array [
+                "#e6228d",
+                "#992fee",
+              ]
+            }
+            style={
+              Object {
+                "color": "#223252",
+                "fontWeight": "700",
+                "textAlign": "center",
+              }
+            }
+          >
+            BUTTON
+          </Text>
+        </View>
+        <BVLinearGradient
+          colors={
+            Array [
+              4293272205,
+              4288229358,
+            ]
+          }
+          endPoint={
+            Object {
+              "x": 1,
+              "y": 1,
+            }
+          }
+          locations={null}
+          startPoint={
+            Object {
+              "x": 0,
+              "y": 1,
+            }
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            gradient={
+              Array [
+                "#e6228d",
+                "#992fee",
+              ]
+            }
+            style={
+              Array [
+                Object {
+                  "color": "#223252",
+                  "fontWeight": "700",
+                  "textAlign": "center",
+                },
+                Object {
+                  "opacity": 0,
+                },
+              ]
+            }
+          >
+            BUTTON
+          </Text>
+        </BVLinearGradient>
+      </RCTMaskedView>
+    </View>
+  </View>
+</View>
+`;

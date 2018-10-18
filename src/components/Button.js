@@ -16,6 +16,7 @@ const textHitSlop = calculateHitSlop(15, Infinity);
 export default class Button extends Component {
   static propTypes = {
     type: PropTypes.oneOf(['base', 'primary', 'secondary', 'text']),
+    testID: PropTypes.string,
     disabled: PropTypes.bool,
     loading: PropTypes.bool,
     style: ViewPropTypes.style,
@@ -36,7 +37,9 @@ export default class Button extends Component {
     let hitSlop;
     const styles =
       stylesForType[
-        this.props.disabled || this.props.loading ? `${this.props.type}Disabled` : this.props.type
+        this.props.disabled || this.props.loading
+          ? `${this.props.type}Disabled`
+          : this.props.type
       ];
 
     const shouldUpperCase = ['primary', 'text', 'secondary'].includes(
@@ -67,7 +70,9 @@ export default class Button extends Component {
     ) {
       const buttonText = this.props.children;
       if (this.props.loading) {
-        buttonContent = <ActivityIndicator size="small" color={gradients.pink[0]}/>;
+        buttonContent = (
+          <ActivityIndicator size="small" color={gradients.pink[0]} />
+        );
       } else if (Platform.OS === 'ios') {
         buttonContent = (
           <GradientText style={styles.buttonText} gradient={gradients.pink}>
@@ -98,16 +103,13 @@ export default class Button extends Component {
             style={[this.props.style]}
             onPress={this.props.onPress}
           >
-            {this.props.loading
-              ? (
-                <ActivityIndicator size="small" color="#fff"/>
-              )
-              : (
-                <T.ButtonText style={styles.buttonText}>
-                  {shouldUpperCase ? buttonText.toUpperCase() : buttonText}
-                </T.ButtonText>
-              )
-            }
+            {this.props.loading ? (
+              <ActivityIndicator size="small" color="#fff" />
+            ) : (
+              <T.ButtonText style={styles.buttonText}>
+                {shouldUpperCase ? buttonText.toUpperCase() : buttonText}
+              </T.ButtonText>
+            )}
           </TouchableOpacity>
         </LinearGradient>
       );
@@ -121,6 +123,7 @@ export default class Button extends Component {
 
     return (
       <TouchableOpacity
+        testID={this.props.testID}
         hitSlop={hitSlop}
         disabled={this.props.disabled || this.props.loading}
         style={[styles.buttonContainer, this.props.style]}

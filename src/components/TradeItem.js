@@ -58,7 +58,8 @@ class TradeItem extends Component {
     };
   }
 
-  handleToggleIsTrade = () => this.setState({ fiatTrade: !this.state.fiatTrade });
+  handleToggleIsTrade = () =>
+    this.setState({ fiatTrade: !this.state.fiatTrade });
   handleChangeTradePrice = tradePrice =>
     this.setState({
       tradePrice: formatDecimalInput(2)(tradePrice.replace('$', '')),

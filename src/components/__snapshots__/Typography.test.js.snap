@@ -1,0 +1,313 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Typography/> <T.ButtonText/> 1`] = `
+<Text
+  accessible={true}
+  allowFontScaling={true}
+  ellipsizeMode="tail"
+  style={
+    Array [
+      Object {
+        "color": "#17181e",
+        "fontFamily": "HelveticaNeue",
+        "fontSize": 12,
+        "letterSpacing": 0,
+        "lineHeight": 18,
+      },
+      undefined,
+    ]
+  }
+>
+  ButtonText
+</Text>
+`;
+
+exports[`<Typography/> <T.GrayedOut/> 1`] = `
+<Text
+  accessible={true}
+  allowFontScaling={true}
+  ellipsizeMode="tail"
+  style={
+    Array [
+      Object {
+        "color": "#5f627d",
+        "fontFamily": "HelveticaNeue",
+        "fontSize": 14,
+        "letterSpacing": 0,
+      },
+      undefined,
+    ]
+  }
+>
+  GrayedOut
+</Text>
+`;
+
+exports[`<Typography/> <T.Heading/> 1`] = `
+<Text
+  accessible={true}
+  allowFontScaling={true}
+  ellipsizeMode="tail"
+  style={
+    Array [
+      Object {
+        "color": "#17181e",
+        "fontFamily": "HelveticaNeue",
+        "fontSize": 28,
+        "fontWeight": "bold",
+        "letterSpacing": -1,
+      },
+      undefined,
+    ]
+  }
+>
+  Heading
+</Text>
+`;
+
+exports[`<Typography/> <T.Light/> 1`] = `
+<Text
+  accessible={true}
+  allowFontScaling={true}
+  ellipsizeMode="tail"
+  style={
+    Array [
+      Object {
+        "color": "#17181e",
+        "fontFamily": "HelveticaNeue",
+        "fontSize": 14,
+        "letterSpacing": 0,
+      },
+      undefined,
+    ]
+  }
+>
+  Light
+</Text>
+`;
+
+exports[`<Typography/> <T.Paragraph/> 1`] = `
+<Text
+  accessible={true}
+  allowFontScaling={true}
+  ellipsizeMode="tail"
+  style={
+    Array [
+      undefined,
+      undefined,
+    ]
+  }
+>
+  Paragraph
+</Text>
+`;
+
+exports[`<Typography/> <T.Price/> 1`] = `
+<Text
+  accessible={true}
+  allowFontScaling={true}
+  ellipsizeMode="tail"
+  style={
+    Array [
+      Object {
+        "color": "#17181e",
+        "fontFamily": "HelveticaNeue",
+        "fontSize": 28,
+        "letterSpacing": 1,
+      },
+      undefined,
+    ]
+  }
+>
+  Price
+</Text>
+`;
+
+exports[`<Typography/> <T.PriceHeading/> 1`] = `
+<Text
+  accessible={true}
+  allowFontScaling={true}
+  ellipsizeMode="tail"
+  style={
+    Array [
+      Object {
+        "color": "#ffffff",
+        "fontFamily": "HelveticaNeue",
+        "fontSize": 44,
+        "letterSpacing": 0,
+      },
+      undefined,
+    ]
+  }
+>
+  PriceHeading
+</Text>
+`;
+
+exports[`<Typography/> <T.PriceLarge/> 1`] = `
+<Text
+  accessible={true}
+  allowFontScaling={true}
+  ellipsizeMode="tail"
+  style={
+    Array [
+      Object {
+        "color": "#ffffff",
+        "fontFamily": "HelveticaNeue",
+        "fontSize": 32,
+        "letterSpacing": 0,
+      },
+      undefined,
+    ]
+  }
+>
+  PriceLarge
+</Text>
+`;
+
+exports[`<Typography/> <T.SemiBold/> 1`] = `
+<Text
+  accessible={true}
+  allowFontScaling={true}
+  ellipsizeMode="tail"
+  style={
+    Array [
+      Object {
+        "color": "#17181e",
+        "fontFamily": "HelveticaNeue",
+        "letterSpacing": 0,
+      },
+      undefined,
+    ]
+  }
+>
+  SemiBold
+</Text>
+`;
+
+exports[`<Typography/> <T.SemiBoldAlternate/> 1`] = `
+<Text
+  accessible={true}
+  allowFontScaling={true}
+  ellipsizeMode="tail"
+  style={
+    Array [
+      Object {
+        "color": "#17181e",
+        "fontFamily": "HelveticaNeue",
+        "letterSpacing": 0,
+      },
+      undefined,
+    ]
+  }
+>
+  SemiBoldAlternate
+</Text>
+`;
+
+exports[`<Typography/> <T.Small/> 1`] = `
+<Text
+  accessible={true}
+  allowFontScaling={true}
+  ellipsizeMode="tail"
+  style={
+    Array [
+      Object {
+        "color": "#17181e",
+        "fontFamily": "HelveticaNeue",
+        "fontSize": 12,
+        "letterSpacing": 0,
+        "lineHeight": 18,
+      },
+      undefined,
+    ]
+  }
+>
+  Small
+</Text>
+`;
+
+exports[`<Typography/> <T.SmallAlternate/> 1`] = `
+<Text
+  accessible={true}
+  allowFontScaling={true}
+  ellipsizeMode="tail"
+  style={
+    Array [
+      Object {
+        "color": "#17181e",
+        "fontFamily": "HelveticaNeue",
+        "fontSize": 12,
+        "letterSpacing": 1,
+      },
+      undefined,
+    ]
+  }
+>
+  SmallAlternate
+</Text>
+`;
+
+exports[`<Typography/> <T.SubHeading/> 1`] = `
+<Text
+  accessible={true}
+  allowFontScaling={true}
+  ellipsizeMode="tail"
+  style={
+    Array [
+      Object {
+        "color": "#17181e",
+        "fontFamily": "HelveticaNeue",
+        "fontSize": 18,
+        "letterSpacing": 0,
+      },
+      undefined,
+    ]
+  }
+>
+  SubHeading
+</Text>
+`;
+
+exports[`<Typography/> <T.SubtitleAlternate/> 1`] = `
+<Text
+  accessible={true}
+  allowFontScaling={true}
+  ellipsizeMode="tail"
+  style={
+    Array [
+      Object {
+        "color": "#00EC9E",
+        "fontFamily": "HelveticaNeue",
+        "fontSize": 12,
+        "letterSpacing": 1,
+      },
+      undefined,
+    ]
+  }
+>
+  SubtitleAlternate
+</Text>
+`;
+
+exports[`<Typography/> <T.TitleAlternate/> 1`] = `
+<Text
+  accessible={true}
+  allowFontScaling={true}
+  ellipsizeMode="tail"
+  style={
+    Array [
+      Object {
+        "color": "#17181e",
+        "fontFamily": "HelveticaNeue",
+        "fontSize": 28,
+        "letterSpacing": 0,
+        "lineHeight": 32,
+      },
+      undefined,
+    ]
+  }
+>
+  TitleAlternate
+</Text>
+`;

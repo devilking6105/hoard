@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  accessibilityLabel="Label"
+  accessible={true}
+  style={
+    Array [
+      Object {
+        "marginBottom": 10,
+        "marginTop": 10,
+      },
+      undefined,
+    ]
+  }
+>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    collapsable={undefined}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "color": "rgba(255, 255, 255, 0.502)",
+        "fontSize": 14,
+        "left": 0,
+        "position": "absolute",
+        "top": -20,
+      }
+    }
+  >
+    Label
+  </Text>
+  <TextInput
+    allowFontScaling={true}
+    autoCapitalize="none"
+    editable={true}
+    keyboardType="default"
+    label="Label"
+    onBlur={[Function]}
+    onChangeText={[MockFunction]}
+    onEndEditing={undefined}
+    onFocus={[Function]}
+    onSubmitEditing={[Function]}
+    returnKeyType="done"
+    secureTextEntry={false}
+    style={
+      Array [
+        Object {
+          "borderBottomWidth": 1,
+          "height": 40,
+        },
+        Object {
+          "color": "#fff",
+        },
+        Object {
+          "borderBottomColor": "rgba(255,255,255, 0.25)",
+        },
+        Object {},
+      ]
+    }
+    underlineColorAndroid="transparent"
+    value={undefined}
+  />
+</View>
+`;
