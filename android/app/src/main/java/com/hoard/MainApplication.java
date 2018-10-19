@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.crashlytics.android.Crashlytics;
 import com.facebook.react.ReactApplication;
+import com.reactcommunity.rnlanguages.RNLanguagesPackage;
 import com.urbanairship.reactnative.ReactAirshipPackage;
 import org.reactnative.camera.RNCameraPackage;
 import io.fabric.sdk.android.Fabric;
@@ -37,6 +38,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNLanguagesPackage(),
             new ReactAirshipPackage(),
             new RNCameraPackage(),
             new LinearGradientPackage(),
