@@ -132,7 +132,7 @@ default_platform :ios
   private_lane :itc do |options|
     scheme = options[:scheme]
 
-    # build_ios
+    build_ios
 
     upload_to_testflight(
       distribute_external: options[:distribute_external] || false,

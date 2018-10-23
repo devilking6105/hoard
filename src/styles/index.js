@@ -94,7 +94,7 @@ export const adjustRGBAOpacity = (rgba, opacity) =>
 export const gradients = {
   green: [colors.greenLight, colors.greenBlue],
   blue: [colors.grayDark, colors.grayDarker],
-  transparentBlueGray: [adjustRGBAOpacity(colorsRGBA.blueGray, 0), colors.blueGrayRGBA],
+  transparentBlueGray: [adjustRGBAOpacity(colorsRGBA.blueGray, 0), colorsRGBA.blueGray],
   pink: [colors.pinkDark, colors.violet],
   light: [colors.grayLighter, colors.grayLight],
   horizontal: {

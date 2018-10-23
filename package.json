@@ -82,7 +82,11 @@
   "rnpm": {
     "assets": [
       "./src/assets/fonts/"
-    ]
+    ],
+    "android": {
+      "mainFilePath": "./src/main/java/com/hoard/MainApplication.java"
+    }
+
   },
   "devDependencies": {
     "babel-eslint": "^8.2.3",
