@@ -11,12 +11,18 @@ import Conditional, { Try, Otherwise } from 'components/Conditional';
 import T from 'components/Typography';
 import { stringToColor } from 'lib/string-helpers';
 
+const exists = v => v;
+
 export default function Contact({contact, style, onPress}) {
   const title = [
     contact.givenName,
     contact.middleName,
     contact.familyName,
-  ].filter(name => name).join(' ');
+  ].filter(exists).join(' ');
+  const initials = [
+    contact.givenName,
+    contact.familyName,
+  ].filter(exists).map(v => v && v[0]).join();
 
   const inner = (
     <View style={[styles.container, style]}>
@@ -27,7 +33,7 @@ export default function Contact({contact, style, onPress}) {
           </Try>
           <Otherwise>
             <View style={[styles.background, {backgroundColor: stringToColor(contact.recordID)}]}>
-              <T.Light style={styles.initials}>{contact.givenName[0]}{contact.familyName[0]}</T.Light>
+              <T.Light style={styles.initials}>{initials}</T.Light>
             </View>
           </Otherwise>
         </Conditional>
