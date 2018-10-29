@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Hoard</string>
+    <string name="testnet_warning">Testnet Version - Do Not Use Real Crypto</string>
 </resources>
