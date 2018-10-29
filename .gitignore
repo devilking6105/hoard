@@ -36,6 +36,7 @@ build/
 .gradle
 local.properties
 *.iml
+android/app/*.iml
 google-services.json
 android/app/api-*.json
 android/app/src/main/res/drawable-*/*.png
