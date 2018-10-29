@@ -14,5 +14,18 @@
     "cant_log_in" : "Can't Log In?",
     "new_sign_up": "New to Hoard? Sign Up!",
     "skip_sign_up": "No thanks, I just want to use the wallet"
+  },
+  "transaction_status" : {
+    "contact_transaction" : {
+      "heading" : "Pending",
+      "request_subheading" : "This user has been notified that you have requested funds from them!",
+      "send_subheading" : "This user does not use Hoard, but has been notified that you have attempted to send them some funds!"
+    },
+    "blockchain_transaction" : {
+      "pending_heading" : "Sending...",
+      "success_heading" : "Success!",
+      "failure_heading" : "Error",
+      "success_subheading" : "Your transaction is pending.",
+      "failure_subheading" : "Oops! Something went wrong. Please try again soon."
   }
 }

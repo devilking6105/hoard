@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, Image, View } from 'react-native';
 
 import Scene from 'components/Scene';
 import T from 'components/Typography';
@@ -14,6 +14,7 @@ import {
   TYPE_REQUEST
 } from 'screens/SendRequest/constants';
 import NavigatorService from 'lib/navigator';
+import { t } from 'translations/i18n';
 import { Try } from 'components/Conditional';
 import Button from 'components/Button';
 
@@ -49,32 +50,37 @@ export default class TransactionStatus extends Component {
     let heading, subheading;
 
     if (isContactTransaction) {
-      heading = 'Pending';
+      heading = t('transaction_status.contact_transaction.heading');
       if (type === TYPE_REQUEST) {
-        subheading = 'This user has been notified that you have requested funds from them!';
+        subheading = t('transaction_status.contact_transaction.request_subheading');
       }
       if (type === TYPE_SEND) {
-        subheading = `This user does not use Hoard,
- but has been notified that you
- have attempted to send them some funds!`;
+        subheading = t('transaction_status.contact_transaction.send_subheading');
       }
     } else {
-      heading = 'Sending...';
+      heading = t('transaction_status.blockchain_transaction.pending_heading');
       if (transaction === TRANSACTION_SUCCESS) {
-        heading = 'Success!';
+        heading = t('transaction_status.blockchain_transaction.success_heading');
+        subheading = t('transaction_status.blockchain_transaction.success_subheading');
       } else if (transaction === TRANSACTION_ERROR) {
-        heading = 'Error.';
-      }
-
-      if (transaction === TRANSACTION_SUCCESS) {
-        subheading = 'Your transaction is pending.';
+        heading = t('transaction_status.blockchain_transaction.failure_heading');
+        subheading = t('transaction_status.blockchain_transaction.failure_subheading');
       }
     }
+
+    const size = transaction === TRANSACTION_ERROR ? 120 : 240;
 
     return (
       <Scene preload={false}>
         <View style={styles.container}>
-          <View style={styles.half}>
+          <View style={[styles.half, styles.imageContainer]}>
+            <Image
+              style={[
+                styles.image,
+                {height: size, width: size}
+              ]}
+              source={transaction === TRANSACTION_ERROR ? require('assets/error-circle.png') : require('assets/waiting_icon.png')}
+            />
           </View>
           <View style={styles.half}>
             <T.Heading style={styles.heading}>{heading}</T.Heading>
@@ -97,6 +103,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
+  },
+  imageContainer: {
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  image: {
+    flex: 1,
+    margin: 40,
+    resizeMode: 'contain',
   },
   half: {
     flex: 1
