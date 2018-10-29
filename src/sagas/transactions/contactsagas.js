@@ -6,7 +6,10 @@ import {
   CANCEL_CONTACT_TRANSACTION_REQUESTING,
   CANCEL_CONTACT_TRANSACTION_SUCCESS,
   CANCEL_CONTACT_TRANSACTION_FAILURE,
+  CONFIRM_CONTACT_TRANSACTION,
 } from './constants';
+
+import { WALLET_SEND_FUNDS_SUCCESS } from "screens/Wallet/constants";
 
 import { recordContactTransaction } from './actions';
 
@@ -19,9 +22,26 @@ export default function* contactTransactionsSagaWatcher() {
   yield all([
     takeLatest(INIT_USER, fetchContactTransactions),
     takeEvery(CANCEL_CONTACT_TRANSACTION_REQUESTING, cancelContactTransaction),
+    takeEvery(WALLET_SEND_FUNDS_SUCCESS, checkForCompletedContactTransaction),
   ]);
 }
 
+export function* checkForCompletedContactTransaction(action) {
+  if (action.transaction_uid) {
+    const endpoint = `${Config.EREBOR_ENDPOINT}/contacts/transaction_confirmation/${action.transaction_uid}`;
+
+    yield call(api.post, endpoint, {
+      confirmed: true,
+      transaction_hash: action.hash
+    });
+
+    yield put({
+      type: CONFIRM_CONTACT_TRANSACTION,
+      transaction_uid: action.transaction_uid,
+      transaction_hash: action.hash
+    });
+  }
+}
 export function* fetchContactTransactions(action) {
   if (action.user && action.user.uid) {
     const endpoint = `${Config.EREBOR_ENDPOINT}/users/${ action.user.uid }/contact_transactions`;

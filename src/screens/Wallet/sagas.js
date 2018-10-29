@@ -197,14 +197,15 @@ async function getBalance(id) {
 
 function* sendFundsFlow(action) {
   try {
-    const { id, fromId, toPublicAddress, amount } = action;
+    const { id, fromId, toPublicAddress, amount, transaction_uid } = action;
 
     const hash = yield call(sendFunds, fromId, toPublicAddress, amount);
 
     yield put({
       type: WALLET_SEND_FUNDS_SUCCESS,
       id,
-      hash
+      hash,
+      transaction_uid
     });
 
     // refetch balance or keep an eye on the status of the request.

@@ -37,6 +37,7 @@ const initialState = {
   amount: '',
   fiat: '',
   recipient: '',
+  recipientAddress: '',
   recipientType: RECIPIENT_TYPE_ADDRESS,
   selectedId: null,
 };
@@ -70,14 +71,15 @@ export default class SendRequest extends Component {
   constructor(props) {
     super(props);
 
-    const selectedId =
-      props.navigation.state &&
-      props.navigation.state.params &&
-      props.navigation.state.params.wallet;
-
-    const transactionType =
-      this.props.navigation.state.params &&
-      this.props.navigation.state.params.type;
+    const params = props.navigation.state && props.navigation.state.params || {};
+    const {
+      wallet: selectedId,
+      recipient = initialState.recipient,
+      recipientAddress = initialState.recipientAddress,
+      recipientType = initialState.recipientType,
+      amount = initialState.amount,
+      type: transactionType = initialState.transactionType
+    } = params;
 
     let completionAction = () => {};
     if (transactionType === TYPE_SEND) {
@@ -90,16 +92,30 @@ export default class SendRequest extends Component {
       ...initialState,
       transactionType,
       completionAction,
-      recipientType:
-        transactionType === TYPE_SEND
-          ? RECIPIENT_TYPE_ADDRESS
-          : RECIPIENT_TYPE_OTHER,
-      selectedId: selectedId ? selectedId : initialState.selectedId,
+      amount,
+      recipient,
+      recipientAddress,
+      selectedId,
+      recipientType: recipientType || transactionType === TYPE_SEND
+        ? RECIPIENT_TYPE_ADDRESS
+        : RECIPIENT_TYPE_OTHER,
     };
   }
 
   componentDidMount() {
     this.fetchPrice();
+  }
+
+  componentWillReceiveProps(newProps) {
+    const selectedWallet = this.props.wallets.find(
+      wallet => wallet.id === this.state.selectedId
+    );
+
+    const oldPrice = this.state.prices && selectedWallet && this.state.prices[selectedWallet.symbol];
+
+    if (!oldPrice && this.state.amount && selectedWallet && newProps.prices[selectedWallet.symbol]) {
+      this.handleChangeAmount(this.state.amount);
+    }
   }
 
   fetchPrice = () => {
@@ -166,7 +182,7 @@ export default class SendRequest extends Component {
     onChangeRecipient: this.handleChangeRecipient
   });
 
-  handleChangeRecipient = ({recipientType, recipient}) => this.setState({recipientType, recipient});
+  handleChangeRecipient = ({recipientType, recipient}) => this.setState({recipientType, recipient, recipientAddress: recipientType === RECIPIENT_TYPE_ADDRESS ? recipient : ''});
 
   handleOnPressCurrency = () => NavigatorService.navigate('CurrencyModal', {
     onChangeCurrency: this.handleChangeCurrency,
@@ -236,13 +252,11 @@ export default class SendRequest extends Component {
 
   send = async () => {
     if (this.validate(this.state)) {
-      let recipient;
+      let { recipientAddress } = this.state;
       const selectedWallet = this.props.wallets.find(
         wallet => wallet.id === this.state.selectedId
       );
-      if (this.state.recipientType === RECIPIENT_TYPE_ADDRESS) {
-        recipient = this.state.recipient;
-      } else {
+      if (this.state.recipientType === RECIPIENT_TYPE_OTHER && !recipientAddress) {
         try {
           const { symbol, publicAddress } = selectedWallet;
           const recipientValue = this.getValueFromRecipient(this.state.recipient);
@@ -278,7 +292,7 @@ export default class SendRequest extends Component {
               type: TYPE_SEND,
             });
           } else {
-            recipient = response.public_key;
+            recipientAddress = response.public_key;
           }
         } catch (e) {
           Alert.alert(
@@ -289,11 +303,18 @@ export default class SendRequest extends Component {
         }
       }
 
-      if (recipient) {
+      if (recipientAddress) {
+        let transaction_uid;
+        const params = this.props.navigation.state.params || {};
+        if (recipientAddress === params.recipientAddress && params.transaction_uid) {
+          transaction_uid = params.transaction_uid;
+        }
+
         const action = this.props.sendFunds(
           this.state.selectedId,
-          recipient,
-          Number(this.state.amount)
+          recipientAddress,
+          Number(this.state.amount),
+          transaction_uid
         );
 
         NavigatorService.navigate('TransactionStatus', {

@@ -79,12 +79,13 @@ export function updateBalance(id) {
   };
 }
 
-export function sendFunds(fromId, toPublicAddress, amount) {
+export function sendFunds(fromId, toPublicAddress, amount, transaction_uid) {
   return {
     type: WALLET_SEND_FUNDS_REQUESTING,
     id: Math.floor(Math.random() * 1e10),
     fromId,
     toPublicAddress,
-    amount
+    amount,
+    transaction_uid
   };
 }

@@ -8,6 +8,7 @@ import { updateTransaction, cancelContactTransaction } from "sagas/transactions/
 import { SYMBOL_ETH, SYMBOL_BTC } from 'containers/App/constants';
 import {showReceiveModal} from 'containers/ReceiveModal/actions';
 import {showSendModal} from 'containers/SendModal/actions';
+import { startNotificationFlow } from "containers/Notifications/actions";
 
 const mapStateToProps = (store, ownProps) => {
   const id = ownProps.navigation.state.params.id;
@@ -48,6 +49,7 @@ const mapDispatchToProps = {
   cancelContactTransaction,
   getCurrencyHistory,
   updateTransaction,
+  startNotificationFlow,
   showSendModal,
   showReceiveModal
 };

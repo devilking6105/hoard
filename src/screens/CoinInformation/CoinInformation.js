@@ -22,6 +22,7 @@ import Swipeable from 'react-native-swipeable';
 import { TYPE_SEND, TYPE_REQUEST } from 'screens/SendRequest/constants';
 import { SYMBOL_BTC, SYMBOL_ETH, SYMBOL_BOAR } from 'containers/App/constants';
 import Config from 'react-native-config';
+import { NOTIFICATION_FLOW_TYPE_CONTACT_FULFILLMENT } from 'containers/Notifications/constants';
 
 const commonTransactionProps = {
   type: PropTypes.oneOf([TYPE_SEND, TYPE_REQUEST]).isRequired,
@@ -102,6 +103,13 @@ export default class CoinInformation extends React.Component {
 
   handleCancelContactTransaction = transaction => () =>
     this.props.cancelContactTransaction(transaction);
+
+  handleFulfillContactTransaction = transaction => () => {
+    this.props.startNotificationFlow({
+      flowType: NOTIFICATION_FLOW_TYPE_CONTACT_FULFILLMENT,
+      transaction
+    });
+  }
 
   handleSelect = (selectedHash) => () => {
     const selectedTx = this.props.transactions.find(tx => tx.details.hash === selectedHash);
@@ -202,7 +210,32 @@ export default class CoinInformation extends React.Component {
                         <Image style={styles.walletActionImage} source={require('assets/cancel.png')} />
                         <Text style={styles.walletActionText}>CANCEL</Text>
                       </View>
-                    </TouchableOpacity>
+                    </TouchableOpacity>,
+                    item.type === TYPE_REQUEST
+                      ? (
+                        <TouchableOpacity
+                          onPress={this.handleFulfillContactTransaction(item)}
+                          style={styles.walletAction}
+                          key={'actionRequest'}
+                        >
+                          <View style={styles.walletActionContainer}>
+                            <Image style={styles.walletActionImage} source={require('assets/request.png')} />
+                            <Text style={styles.walletActionText}>REQUEST</Text>
+                          </View>
+                        </TouchableOpacity>
+                      )
+                      : (
+                        <TouchableOpacity
+                          onPress={this.handleFulfillContactTransaction(item)}
+                          style={styles.walletAction}
+                          key={'actionSend'}
+                        >
+                          <View style={styles.walletActionContainer}>
+                            <Image style={styles.walletActionImage} source={require('assets/send.png')} />
+                            <Text style={styles.walletActionText}>SEND</Text>
+                          </View>
+                        </TouchableOpacity>
+                      )
                   ]}
                   rightButtonWidth={95}
                 >
@@ -327,6 +360,7 @@ const styles = StyleSheet.create({
     height: 20,
     width: 20,
     marginBottom: 5,
+    resizeMode: 'contain'
   },
   walletActionText: {
     color: '#fff',

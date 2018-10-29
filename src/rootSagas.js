@@ -21,6 +21,7 @@ import initSagas from 'sagas/init';
 import walletSagas from 'screens/Wallet/sagas';
 import pricingSagas from 'sagas/pricing/saga';
 import kycStatusWatcher from 'screens/KYC/sagas';
+import notificationSagas from 'containers/Notifications/sagas';
 
 export default function* rootSaga() {
   yield all([
@@ -32,5 +33,6 @@ export default function* rootSaga() {
     pricingSagas(),
     transactionSagas(),
     kycStatusWatcher(),
+    notificationSagas(),
   ]);
 }

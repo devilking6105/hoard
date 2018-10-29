@@ -1,6 +1,7 @@
 import {
   HYDRATE_TRANSACTIONS,
   RECORD_CONTACT_TRANSACTION,
+  CONFIRM_CONTACT_TRANSACTION,
   CANCEL_CONTACT_TRANSACTION_SUCCESS,
   TRANSACTION_FOUND,
   TRANSACTION_UPDATE
@@ -52,6 +53,22 @@ export default function reducer(state = initialState, action) {
             details: {
               ...action.transaction.details,
               status: 'denied'
+            }
+          }
+        }
+      };
+    }
+    case CONFIRM_CONTACT_TRANSACTION: {
+      return {
+        ...state,
+        contactTransactions: {
+          ...state.contactTransactions,
+          [action.transaction_uid]: {
+            ...state.contactTransactions[action.transaction_uid],
+            details: {
+              ...state.contactTransactions[action.transaction_uid].details,
+              transaction_hash: action.transaction_hash,
+              status: 'confirmed'
             }
           }
         }
