@@ -13,6 +13,7 @@ import Track from 'screens/Wallet/Track';
 import Import from 'screens/Wallet/Import';
 import Signup from 'screens/Signup';
 import Forgot from 'screens/Forgot';
+import LoadingScreen from 'screens/LoadingScreen';
 import ForgotModal from 'screens/Forgot/ForgotModal';
 import Menu from 'screens/Menu';
 import ViewAddress from 'screens/ViewAddress';
@@ -36,6 +37,7 @@ export let navigatorRef;
 
 const RoutingStack = createStackNavigator(
   {
+    LoadingScreen: { screen: LoadingScreen, navigationOptions: { header: null } },
     Login: {
       screen: Login,
       navigationOptions: navProps =>

@@ -25,6 +25,7 @@ import receiveModal from 'containers/ReceiveModal/reducer';
 import sendModal from 'containers/SendModal/reducer';
 import pricing from 'sagas/pricing/reducer';
 import settings from 'screens/Settings/reducer';
+import loadingReducer from 'screens/LoadingScreen/reducer';
 import transactions from 'sagas/transactions/reducer';
 import transactionStatus from 'screens/TransactionStatus/reducer';
 import kyc from 'screens/KYC/reducer';
@@ -42,7 +43,8 @@ const rootReducer = combineReducers({
   settings,
   transactions,
   transactionStatus,
-  kyc
+  kyc,
+  loadingReducer,
 });
 
 export default rootReducer;

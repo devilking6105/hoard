@@ -27,5 +27,13 @@
       "failure_heading" : "Error",
       "success_subheading" : "Your transaction is pending.",
       "failure_subheading" : "Oops! Something went wrong. Please try again soon."
+    }
+  },
+  "loading" : {
+    "app_initialization" : "Initializing App",
+    "transaction_hydration" : "Fetching Transactions",
+    "price_initialization" : "Structuring Prices",
+    "wallet_hydration" : "Setting Up Wallets",
+    "loading_finished" : "Reticulating Splines"
   }
 }

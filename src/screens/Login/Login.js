@@ -18,7 +18,6 @@ export default class Login extends Component {
     hasMnemonic: PropTypes.bool.isRequired,
     navigation: PropTypes.any,
     loginRequest: PropTypes.func.isRequired,
-    appReady: PropTypes.bool.isRequired,
     login: PropTypes.shape({
       error: PropTypes.string,
     }),
@@ -86,7 +85,7 @@ export default class Login extends Component {
 
   render() {
     return (
-      <Layout contentReady={this.props.appReady} keyboard>
+      <Layout preload={false} keyboard>
         <Body scrollable style={styles.body} navigationOffset={80}>
           <Header style={{ alignItems: 'center', marginTop: -40 }}>
             <Image

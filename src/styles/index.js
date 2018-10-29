@@ -55,8 +55,8 @@ export const colors = {
   grayDarker: '#17181e', // rgba(23, 24, 30, 1)
   black: '#000000', // rgba(0, 0, 0, 1)
 
-  pinkDark: '#e6228d', // rgba(230, 34, 141, 1)
-  violet: '#992fee', // rgba(153, 47, 238, 1)
+  pinkDark: '#E5129A', // rgba(229, 18, 154, 1)
+  violet: '#9E0C6A', // rgba(158, 12, 106, 1)
   greenLighter: '#00EC9E', //rgb(0, 236, 158)
   greenLight: '#00a073', // rgba(0, 160, 115, 1)
   greenBlue: '#007982', // rgba(0, 121, 130, 1)
@@ -80,8 +80,8 @@ export const colorsRGBA = {
   grayDark: 'rgba(49, 51, 71, 1)',
   grayDarker: 'rgba(23, 24, 30, 1)',
   black: 'rgba(0, 0, 0, 1)',
-  pinkDark: 'rgba(230, 34, 141, 1)',
-  violet: 'rgba(153, 47, 238, 1)',
+  pinkDark: rgba(229, 18, 154, 1),
+  violet: rgba(158, 12, 106, 1),
   greenLighter: 'rgb(0, 236, 158)',
   greenLight: 'rgba(0, 160, 115, 1)',
   greenBlue: 'rgba(0, 121, 130, 1)',

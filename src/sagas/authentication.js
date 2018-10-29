@@ -187,12 +187,26 @@ export default function* authenticationWatcher() {
       const mnemonicPhrase = yield select(mnemonicPhraseSelector);
       const pin = yield call(getKey);
 
+      let to;
+      let resetReplace = false;
       if (mnemonicPhrase && pin) {
-        NavigatorService.resetReplace('Login', 'Menu');
+        resetReplace = true;
+        to = 'Menu';
       } else if (mnemonicPhrase && !pin) {
-        NavigatorService.navigate('Store');
+        to = 'Store';
       } else {
-        NavigatorService.navigate('Mnemonic');
+        to = 'Mnemonic';
+      }
+
+      const currentRoute = NavigatorService.getCurrentRoute().routes[0].routeName;
+      if (currentRoute === 'LoadingScreen') {
+        yield put({type: 'POST_LOAD_REDIRECT', to});
+      } else {
+        if (resetReplace) {
+          NavigatorService.resetReplace(currentRoute, to);
+        } else {
+          NavigatorService.navigate(to);
+        }
       }
     }
 
