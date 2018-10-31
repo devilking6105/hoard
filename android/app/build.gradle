@@ -126,8 +126,8 @@ android {
         applicationId "com.hoardinc.Hoard"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 70
-        versionName "1.8"
+        versionCode 76
+        versionName "1.9"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
