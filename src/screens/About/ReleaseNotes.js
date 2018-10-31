@@ -3,6 +3,7 @@ import { View, StyleSheet, Text } from 'react-native';
 import T from 'components/Typography';
 import { Layout, Body } from 'components/Base';
 import Config from 'react-native-config';
+import releaseNotesArray from '../../release_notes.json';
 
 export default function ReleaseNotes() {
   return (
@@ -51,12 +52,12 @@ export default function ReleaseNotes() {
               </View>
             </Fragment>
           }
-          <T.SubHeading style={styles.subheading}>
-            Release 1.0
-          </T.SubHeading>
-          <T.Light style={styles.type}>
-            &bull;  🎉 🎉 🎉 🎉 🎉
-          </T.Light>
+          {releaseNotesArray.map(({release_notes, version_code}) => (
+            <Fragment key={version_code}>
+              <T.SubHeading style={styles.subheading}>{version_code}</T.SubHeading>
+              <T.Light style={styles.type}>{release_notes}</T.Light>
+            </Fragment>
+          ))}
         </Body>
       </Body>
     </Layout>
