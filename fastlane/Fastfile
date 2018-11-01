@@ -290,7 +290,6 @@ private_lane :compile_release_notes do |options|
     version = get_version_number(xcodeproj: XCODE_PROJECT_PATH, target: 'Hoard')
   elsif options[:android]
     version = read_android_version
-    puts "version: #{version}"
   end
 
   major_version = version.split('.').first
