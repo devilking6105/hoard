@@ -1,16 +1,21 @@
 import Bitcoin from 'bitcoinjs-lib';
 import {TRANSACTION_FOUND} from './constants';
 import { WALLET_IMPORT_SUCCESS, WALLET_TRACK_SYMBOL_SUCCESS } from "screens/Wallet/constants";
-import { SYMBOL_BTC } from "containers/App/constants";
+import { SYMBOL_BTC, SYMBOL_RVN } from "containers/App/constants";
 import { fork, all, take, select, takeEvery, call, put } from "redux-saga/effects";
 import { TYPE_SEND, TYPE_REQUEST } from 'screens/SendRequest/constants';
 
-import {BTCNodeRequest} from 'screens/Wallet/WalletInstances/BtcWallet';
+import {config as BtcConfig} from 'screens/Wallet/WalletInstances/BtcWallet';
+import {config as RvnConfig} from 'screens/Wallet/WalletInstances/RvnWallet';
 import {timestampPriceApi} from './ethsagas';
 import TxDecoder from './btc-tx-decoder';
-import Config from 'react-native-config';
 
 import api from 'lib/api';
+
+const configForCoin = {
+  [SYMBOL_RVN]: RvnConfig,
+  [SYMBOL_BTC]: BtcConfig
+};
 
 export default function* btcTransactionsSagaWatcher() {
   yield all([
@@ -19,9 +24,10 @@ export default function* btcTransactionsSagaWatcher() {
 }
 
 export function* fetchTransactions(action) {
-  if (action.payload.symbol === SYMBOL_BTC) {
+  if ([SYMBOL_BTC, SYMBOL_RVN].includes(action.payload.symbol)) {
+    const config = configForCoin[action.payload.symbol];
     try {
-      const endpoint = `${Config.BTC_NODE_ENDPOINT}/txs?address=${action.payload.publicAddress}`;
+      const endpoint = `${config.endpoint}/txs?address=${action.payload.publicAddress}`;
       const response = yield api.get(endpoint);
 
       for (let transaction of response.txs) {
@@ -54,18 +60,18 @@ export function* fetchTransactions(action) {
           amount = Number(firstMyVout.value);
         }
 
-        const price = yield call(timestampPriceApi, `?fsym=BTC&tsyms=USD&ts=${transaction.time}`);
+        const price = yield call(timestampPriceApi, `?fsym=${action.payload.symbol}&tsyms=USD&ts=${transaction.time}`);
 
         yield put({
           type: TRANSACTION_FOUND,
           transaction: {
             type: wasSend ? TYPE_SEND : TYPE_REQUEST,
             date: transaction.time * 1000,
-            symbol: SYMBOL_BTC,
+            symbol: action.payload.symbol,
             from,
             to,
             amount,
-            price: amount * price.BTC.USD,
+            price: amount * price[action.payload.symbol].USD,
             fiatTrade: false,
             details: {
               ...transaction,
@@ -76,7 +82,7 @@ export function* fetchTransactions(action) {
       }
     } catch(e) {
       if (__DEV__) {
-        console.log('An error occurred while fetching BTC transacions: ', e);
+        console.log(`An error occurred while fetching ${action.payload.symbol} transacions: `, e);
       }
     }
   }

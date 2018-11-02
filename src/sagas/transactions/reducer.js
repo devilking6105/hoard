@@ -12,7 +12,7 @@ import {
 // needed_transaction_keys => {type, date, symbol, to, from, amount, price, details}
 
 const initialState = {
-  version: 2,
+  version: 7,
   hydrationCompleted: false,
   contactTransactionsBySymbol: {
     // <symbol>

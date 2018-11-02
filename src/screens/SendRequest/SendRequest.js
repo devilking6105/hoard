@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Validator from 'wallet-address-validator';
 import Config from 'react-native-config';
 import { Alert, Image, StyleSheet, View, TouchableOpacity } from 'react-native';
 import memoize from 'lodash/memoize';
@@ -13,7 +12,7 @@ import UnderlineInput from 'components/UnderlineInput';
 import LoadingSpinner from 'components/LoadingSpinner';
 import Button from 'components/Button';
 import SelectableImageHeader from 'components/SelectableImageHeader';
-import { getCoinMetadata } from 'lib/currency-metadata';
+import { getCoinMetadata, validateAddress } from 'lib/currency-metadata';
 import { formatDecimalInput } from 'lib/formatters';
 import Conditional, { Try, Otherwise } from 'components/Conditional';
 import {
@@ -22,7 +21,6 @@ import {
   RECIPIENT_TYPE_ADDRESS,
   RECIPIENT_TYPE_OTHER,
 } from 'screens/SendRequest/constants';
-import { SYMBOL_BOAR, SYMBOL_ETH } from 'containers/App/constants';
 import Icon from 'components/Icon';
 import NavigatorService from 'lib/navigator';
 import api from 'lib/api';
@@ -234,7 +232,7 @@ export default class SendRequest extends Component {
       return false;
     } else if (
       recipientType === RECIPIENT_TYPE_ADDRESS &&
-      !Validator.validate(recipient, selectedWallet.symbol === SYMBOL_BOAR ? SYMBOL_ETH : selectedWallet.symbol, Config.CURRENCY_NETWORK_TYPE === 'main' ? 'prod' : 'testnet')
+      !validateAddress(selectedWallet.symbol, recipient)
     ) {
       Alert.alert(`This is not a valid ${selectedWallet.symbol} address`);
       return false;
