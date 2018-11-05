@@ -70,7 +70,7 @@ export default class Signup extends Component {
       });
     }
 
-    this.setState({ loading: true }, () => this.props.signupRequest(answers));
+    this.setState({ loading: true }, () => this.props.signupRequest(this.formatAnswers(answers)));
   };
 
   updateFormField = fieldName => text => {
@@ -115,6 +115,11 @@ export default class Signup extends Component {
         '',
     };
   };
+
+  formatAnswers = answers => ({
+    ...answers,
+    phone_number: answers.phone_number && answers.phone_number.replace(/[-N*,;/#.\s()]/g, '')
+  })
 
   safeFocus = memoize(element => () => invoke(element, 'inputRef.focus'));
 
