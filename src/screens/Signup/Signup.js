@@ -204,6 +204,7 @@ export default class Signup extends Component {
               placeholder="Phone Number"
               placeholderTextColor={placeholderTextColor}
               returnKeyType="next"
+              keyboardType="phone-pad"
               onSubmitEditing={this.safeFocus(this.signupUsernameInput)}
               onChangeText={this.updateFormField('phone_number')}
               value={answers.phone_number}
